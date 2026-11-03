@@ -3,7 +3,7 @@
 LLM Tutorial 的静态课程站，使用 VitePress，可发布到 GitHub Pages。
 教材、学习记录和路线图继续以仓库根目录的 Markdown 为唯一正文来源。
 
-站点地址：<https://yanickxia.github.io/llm-tutorial/>。
+站点地址：<https://llm-tutorial.pages.yanick.site/>。
 源码仓库：<https://github.com/yanickxia/llm-tutorial>。
 
 ## 本地预览
@@ -49,7 +49,7 @@ npm run preview
 ```
 
 `npm test` 先构建，再检查所有页面的内部链接、锚点与静态资源，以及正文来源、源码链接和数学公式渲染。
-静态产物是 `dist/`，包含 `.nojekyll`，无需服务器端运行时。
+静态产物是 `dist/`，包含 `.nojekyll` 和从 `site/CNAME` 同步的 `CNAME`，无需服务器端运行时。
 
 验证 GitHub 项目站点的子路径时，构建和预览使用相同的环境变量，并打开终端显示的含子路径地址：
 
@@ -64,10 +64,23 @@ PAGES_BASE_PATH=/llm-tutorial/ npm run preview
 只将默认分支部署到 Pages；PR 只构建和检查，也支持手动触发。
 
 仓库连接到 GitHub 后，在 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**。
-默认项目站点路径从仓库名自动计算，例如 `/llm-tutorial/`；`<owner>.github.io` 仓库使用 `/`。
 首次推送成功后，部署链接可在 Actions 的 `github-pages` environment 中查看。
 
-若以后配置自定义域名，在 GitHub Pages 设置域名和 DNS，并将仓库的 Actions 变量
-`PAGES_BASE_PATH` 设为 `/`。不需要修改教材链接。
+当前自定义域名记录在 [CNAME](CNAME)：`llm-tutorial.pages.yanick.site`。
+对应的 DNS 配置为：
+
+| 类型 | 完整域名 | 目标 |
+| --- | --- | --- |
+| CNAME | `llm-tutorial.pages.yanick.site` | `yanickxia.github.io` |
+
+现有 `*.pages.yanick.site` 通配 CNAME 已覆盖该域名。
+GitHub Pages 的 **Custom domain** 必须同时绑定此域名；证书签发后启用 **Enforce HTTPS**。
+使用 Actions 部署时，仅发布 `CNAME` 文件不会自动修改 GitHub Pages 的域名设置。
+
+工作流检测到非空 `site/CNAME` 后自动使用根路径 `/`，无需另外设置 Actions 变量。
+更换域名时同步修改此文件、GitHub Pages 设置、DNS 和文档中的站点链接，不需要修改教材内部链接。
+若移除自定义域名，删除 `site/CNAME` 并清空 Pages 的 **Custom domain**；工作流会恢复按仓库名
+计算项目路径，例如 `/llm-tutorial/`，`<owner>.github.io` 仓库使用 `/`。
+没有自定义域名时，可通过仓库 Actions 变量 `PAGES_BASE_PATH` 覆盖默认路径。
 
 仅添加工作流不会自动创建远端仓库或启用 Pages；是否已上线以 Actions 的部署结果为准。

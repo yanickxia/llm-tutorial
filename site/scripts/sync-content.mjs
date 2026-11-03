@@ -96,6 +96,12 @@ export async function syncContent() {
   await publish('index.md', await readFile(path.join(siteRoot, 'home.md'), 'utf8'));
   await publish('public/favicon.svg', await readFile(path.join(siteRoot, 'favicon.svg'), 'utf8'));
   await publish('public/.nojekyll', '');
+  try {
+    const customDomain = (await readFile(path.join(siteRoot, 'CNAME'), 'utf8')).trim();
+    if (customDomain) await publish('public/CNAME', `${customDomain}\n`);
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
   const metadataChanged = await publish('course.json', `${JSON.stringify(course, null, 2)}\n`);
   async function prune(directory) {
     for (const entry of await readdir(directory, { withFileTypes: true })) {

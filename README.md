@@ -53,7 +53,7 @@ Makefile          统一命令入口，运行 make 查看帮助
 
 ## 课程网站
 
-在线阅读：[LLM Field Notes](https://yanickxia.github.io/llm-tutorial/)。
+在线阅读：[LLM Field Notes](https://llm-tutorial.pages.yanick.site/)。
 源码仓库：[yanickxia/llm-tutorial](https://github.com/yanickxia/llm-tutorial)。
 
 课程站支持课程导航、全文搜索、数学公式和学习笔记阅读。使用 Node.js 22+：
@@ -64,4 +64,4 @@ make site-dev
 ```
 
 `make check-site` 构建并检查页面和链接。GitHub Pages 的自动部署配置已放在
-[工作流](.github/workflows/pages.yml)，远端首次启用步骤和子路径配置见 [站点说明](site/README.md)。
+[工作流](.github/workflows/pages.yml)，自定义域名和部署路径配置见 [站点说明](site/README.md)。

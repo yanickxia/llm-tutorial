@@ -1,9 +1,11 @@
-import { appendFileSync } from 'node:fs';
+import { appendFileSync, existsSync, readFileSync } from 'node:fs';
 import { pagesBase } from './paths.mjs';
 
 const repository = process.env.GITHUB_REPOSITORY?.split('/')[1];
 if (!repository) throw new Error('GITHUB_REPOSITORY is required');
-const base = pagesBase(process.env.PAGES_BASE_PATH ||
+const cnameFile = new URL('../CNAME', import.meta.url);
+const customDomain = existsSync(cnameFile) ? readFileSync(cnameFile, 'utf8').trim() : '';
+const base = pagesBase(customDomain ? '/' : process.env.PAGES_BASE_PATH ||
   (repository.endsWith('.github.io') ? '/' : `/${repository}/`));
 if (!process.env.GITHUB_ENV) throw new Error('GITHUB_ENV is required');
 appendFileSync(process.env.GITHUB_ENV, `PAGES_BASE_PATH=${base}\n`);
