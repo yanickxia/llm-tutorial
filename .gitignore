@@ -1,0 +1,27 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+*.egg-info/
+/build/
+/dist/
+
+# 本地凭据
+.env
+.env.*
+!.env.example
+
+# 数据、模型与实验生成物；小型教学样例放入 data/examples/
+/data/raw/
+/data/processed/
+/checkpoints/
+/outputs/
+/runs/
+/wandb/
+*.pt
+*.pth
+*.ckpt
+*.safetensors

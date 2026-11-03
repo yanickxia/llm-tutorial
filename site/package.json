@@ -1,0 +1,21 @@
+{
+  "name": "llm-field-notes",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "sync-content": "node scripts/sync-content.mjs",
+    "predev": "npm run sync-content",
+    "dev": "vitepress dev --host 127.0.0.1",
+    "prebuild": "npm run sync-content",
+    "build": "vitepress build",
+    "preview": "vitepress preview --host 127.0.0.1",
+    "test": "npm run build && node --test tests/site.test.mjs"
+  },
+  "devDependencies": {
+    "markdown-it-mathjax3": "4.3.2",
+    "vitepress": "1.6.4",
+    "vue": "^3.5.13"
+  }
+}

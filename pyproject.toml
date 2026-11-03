@@ -1,0 +1,10 @@
+[project]
+name = "llm-tutorial"
+version = "0.1.0"
+description = "从零理解并实现语言模型，再构建 LLM 应用的学习实验"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = []
+
+[tool.uv]
+package = false
