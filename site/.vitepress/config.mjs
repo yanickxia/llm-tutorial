@@ -16,7 +16,7 @@ const sidebar = [
     text: group.replace(/^\d+-/, ''),
     items: course.lessons.filter((lesson) => lesson.section === group).map((lesson) => ({
       text: `${lesson.id} · ${lesson.title}`, link: lesson.url,
-      items: [{ text: '学习记录', link: lesson.notesUrl }],
+      items: [{ text: '学习笔记', link: lesson.notesUrl }],
     })),
   })),
 ];
@@ -59,9 +59,9 @@ export default defineConfig({
     siteTitle: 'LLM Field Notes',
     socialLinks: [{ icon: 'github', link: 'https://github.com/yanickxia/llm-tutorial' }],
     nav: [
-      { text: '课程', link: course.lessons[0].url, activeMatch: '/docs/lesson-' },
+      { text: '教程', link: course.lessons[0].url, activeMatch: '/docs/lesson-' },
       { text: '路线图', link: '/docs/roadmap.html' },
-      { text: '学习记录', link: '/notes/', activeMatch: '/notes/' },
+      { text: '学习笔记', link: '/notes/', activeMatch: '/notes/' },
       { text: '参考资料', link: '/docs/reference/' },
     ],
     sidebar,

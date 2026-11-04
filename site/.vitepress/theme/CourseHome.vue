@@ -51,14 +51,14 @@ const pad = (number) => String(number).padStart(2, '0');
     <section class="learning-method" aria-labelledby="method-title">
       <div class="method-intro"><p class="eyebrow">HOW WE LEARN</p><h2 id="method-title">把“我懂了”，<br>变成可以验证的证据。</h2><p>教材、实验和学习笔记一起推进。<br>错误的预测，也值得保留。</p></div>
       <ol class="method-steps">
-        <li><span>01</span><div><h3>理解与预测</h3><p>先讲清概念，用小例子推导运行结果。</p></div></li>
-        <li><span>02</span><div><h3>动手与观察</h3><p>完成一个贯穿实验，检查实际输出与边界。</p></div></li>
-        <li><span>03</span><div><h3>解释与复盘</h3><p>对照预测，留下自己的解释和新的问题。</p></div></li>
+        <li><span>01</span><div><h3>阅读与预测</h3><p>阅读教程，将实验前的预测写入学习笔记。</p></div></li>
+        <li><span>02</span><div><h3>动手与记录</h3><p>完成实验，在笔记中保留输出、修订与解释。</p></div></li>
+        <li><span>03</span><div><h3>审阅与推进</h3><p>导师审阅笔记和实验，通过后准备下一课。</p></div></li>
       </ol>
     </section>
 
     <section class="reading-desk" aria-label="更多学习入口">
-      <a :href="withBase('/notes/')"><span>FIELD NOTES</span><strong>学习记录 <span aria-hidden="true">↗</span></strong><p>把预测、实验结果与追问留在一起。</p></a>
+      <a :href="withBase('/notes/')"><span>FIELD NOTES</span><strong>学习笔记 <span aria-hidden="true">↗</span></strong><p>写下预测、实验结果与解释，交给导师审阅。</p></a>
       <a :href="withBase('/docs/reference/')"><span>THE BOOKSHELF</span><strong>参考资料 <span aria-hidden="true">↗</span></strong><p>按当前课程选读，连接实现与原始资料。</p></a>
     </section>
   </main>
