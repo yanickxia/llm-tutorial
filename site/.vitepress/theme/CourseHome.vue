@@ -36,7 +36,7 @@ const pad = (number) => String(number).padStart(2, '0');
     </section>
 
     <section class="curriculum" aria-labelledby="curriculum-title">
-      <div class="section-heading"><div><p class="eyebrow">THE LEARNING PATH</p><h2 id="curriculum-title">先实现模型，再构建应用。</h2></div><p>七个阶段，一条完整的学习路径。<br>课程随学习逐步展开。</p></div>
+      <div class="section-heading"><div><p class="eyebrow">THE LEARNING PATH</p><h2 id="curriculum-title">先实现模型，再构建应用。</h2></div><p>{{ course.stages.length }} 个阶段，每课聚焦一个小能力。<br>课程随学习逐步展开。</p></div>
       <div class="stage-list">
         <div v-for="stage in course.stages" :key="stage.id" class="stage-row">
           <span class="stage-number">{{ stage.id }}</span>
